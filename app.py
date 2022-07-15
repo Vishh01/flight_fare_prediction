@@ -1,11 +1,14 @@
 from flask import Flask, request, render_template
 from flask_cors import cross_origin
+import bz2
 import sklearn
 import pickle
 import pandas as pd
 
 app = Flask(__name__)
-model = pickle.load(open("plane_rf1.pkl", "rb"))
+
+file = bz2.BZ2File("planerf",'rb')
+model = pickle.load(file)
 
 
 
